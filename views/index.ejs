@@ -10,12 +10,12 @@
     <script defer src="/js/script.js" type="text/javascript"></script>    
   </head>
   <script>
-
+    //updating and deleting todo
     let csrfToken = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
 
-    function deleteTodo(id) {
+      function deleteTodo(id){
       fetch(`/todos/${id}`, {
         method: "delete",
         headers: { "Content-Type": "application/json" },
@@ -47,10 +47,12 @@
         .catch((err) => console.error(err));
     };
 
+    // eslint-disable-next-line no-unused-vars
     
 
   </script>
   <body>
+    <!-- the contents of header.js post-->
 
     <div class="grid grid-cols-6">
       <div class="col-start-3 col-span-2">
