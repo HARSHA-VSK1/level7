@@ -4,52 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="<%= csrfToken %>" />
-    <title>Harsha's Todo Manager</title>
+    <title>Ashish Todo Manager</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      let csrfToken = document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content");
-  
-      function deleteTodo(id){
-        fetch(`/todos/${id}`, {
-          method: "delete",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            _csrf: csrfToken,
-          }),
-        })
-          .then((res) => {
-            if (res.ok) {
-              window.location.reload();
-            }
-          })
-          .catch((err) => console.error(err));
-      };
-  
-      function updateTodo(id){
-        fetch(`/todos/${id}`, {
-          method: "put",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            _csrf: csrfToken,
-          }),
-        })
-          .then((res) => {
-            if (res.ok) {
-              window.location.reload();
-            }
-          })
-          .catch((err) => console.error(err));
-      };
-  
-      // eslint-disable-next-line no-unused-vars
-      
-  
-    </script>
+    <script defer src="/js/script.js" type="text/javascript"></script>    
   </head>
-  
+  <script>
+    //updating and deleting todo
+    let csrfToken = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute("content");
+
+    // eslint-disable-next-line no-unused-vars
+    const updateTodo = (id) => {
+      fetch(`/todos/${id}`, {
+        method: "put",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _csrf: csrfToken,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            window.location.reload();
+          }
+        })
+        .catch((err) => console.error(err));
+    };
+
+    // eslint-disable-next-line no-unused-vars
+    const deleteTodo = (id) => {
+      fetch(`/todos/${id}`, {
+        method: "delete",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _csrf: csrfToken,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            window.location.reload();
+          }
+        })
+        .catch((err) => console.error(err));
+    };
+
+  </script>
   <body>
     <!-- the contents of header.js post-->
 

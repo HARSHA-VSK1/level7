@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
       return dueLaterItems;
     }
 
-    static deleteTodo() {
+    deleteTodo() {
       return this.destroy({
         where: {
           id: this.id,
