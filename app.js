@@ -102,9 +102,9 @@ app.delete("/todos/:id", async function (request, response) {
   const todo = await Todo.findByPk(request.params.id);
   if (todo) {
     try {
-      const deletedTodo = await todo.deleteTodo();
+      const DeleteDTodo = await todo.deleteTodo();
 
-      return response.send(deletedTodo ? true : false);
+      return response.send(DeleteDTodo ? true : false);
     } catch (error) {
       console.log(error);
       return response.status(422).json(error);
